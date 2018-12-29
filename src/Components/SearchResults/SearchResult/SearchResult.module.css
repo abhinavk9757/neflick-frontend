@@ -1,0 +1,24 @@
+
+.SearchResult {
+  position: relative;
+  left: 0px;
+  margin-left: 5px;
+  display: inline-block;
+  height: 100px;
+  min-width: 200px;
+  background-color: red;
+  transition: ease-out 1s all;
+  text-align: center;
+  color: rgb(0, 0, 0, 0);
+}
+
+.SearchResult > p {
+  margin: 0px;
+}
+
+.SearchResult:hover {
+  height: 150px;
+  min-width: 270px;
+  color: rgb(0, 0, 0, 1);
+  background-color: blue; 
+}

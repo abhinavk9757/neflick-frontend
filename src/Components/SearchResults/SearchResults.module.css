@@ -1,0 +1,9 @@
+.SearchResults {
+  margin-top: 10px;
+  width: 100%;
+  min-height: 170px;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  overflow-x: scroll;
+}
