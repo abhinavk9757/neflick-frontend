@@ -1,0 +1,27 @@
+.PrimaryNavigation {
+  position: relative;
+  top: -14%;
+  display: inline-flex;
+  justify-content: left;
+}
+.PrimaryNavigation > .DesktopOnly > a{
+    text-decoration: none;
+    margin-right: 15px;
+    color: white;
+    font-weight: 400;
+    font-size: 13px;
+    cursor: pointer;
+    transition: 0.4s color; 
+}
+
+.PrimaryNavigation > .DesktopOnly > a:hover{
+    color: grey;
+}
+
+@media (max-width : 900px){
+    .DesktopOnly{
+        display: none;
+    }
+}
+
+

@@ -1,6 +1,8 @@
 import React from 'react';
 import classes from './SearchResult.module.css';
 
+import MovieInformation from '../../MovieInformation/MovieInformation';
+
 // import sampleImg from '../../../Assets/movieSampleImg/aqua.jpg';
 
 const searchResult = () => {
@@ -9,11 +11,8 @@ const searchResult = () => {
       {
         // <img src={sampleImg} alt="movie" className={classes.Image} />}
       }
-     
-        <h2>Aquaman</h2>
-        <p>Most awesome movie of 2018</p>
-        <p>Critics said awesome too!!</p>
-      
+
+      <MovieInformation />
     </div>
   );
 };

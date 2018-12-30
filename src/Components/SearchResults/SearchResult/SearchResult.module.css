@@ -4,8 +4,8 @@
   left: 0px;
   margin-left: 5px;
   display: inline-block;
-  height: 100px;
-  min-width: 200px;
+  height: 133px;
+  min-width: 236px;
   background-color: red;
   transition: ease-out 1s all;
   text-align: center;
@@ -17,8 +17,8 @@
 }
 
 .SearchResult:hover {
-  height: 150px;
-  min-width: 270px;
+  height: 250px;
+  min-width: 400px;
   color: rgb(0, 0, 0, 1);
   background-color: blue; 
 }
