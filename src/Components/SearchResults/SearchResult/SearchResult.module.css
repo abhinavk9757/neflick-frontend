@@ -7,9 +7,11 @@
   height: 133px;
   min-width: 236px;
   background-color: red;
-  transition: ease-out 1s all;
+  transition: ease-in-out 0.4s all;
+  transition-delay: 0.2s;
   text-align: center;
   color: rgb(0, 0, 0, 0);
+  cursor: pointer;
 }
 
 .SearchResult > p {

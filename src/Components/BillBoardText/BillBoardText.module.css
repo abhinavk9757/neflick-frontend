@@ -27,7 +27,7 @@
   justify-content: center;
   align-items: center;
   width: 10vw;
-  min-height: 5vh;
+  min-height: 3.5vw;
   margin: 0;
   margin-top: 1vh;
   margin-bottom: 1vh;
@@ -73,7 +73,6 @@
 }
 
 .Information{
-    margin-top: 1vh; 
     font-size: 1.5vw;
     color: white;
     cursor: pointer;
