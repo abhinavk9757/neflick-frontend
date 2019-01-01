@@ -19,36 +19,34 @@
   color: grey;
 }
 
-.MobileLinks{
-    display: none;
-    position: fixed;
-    top: 13vh;
-    left: 4.2vw;
-    width: 260px;
-    border-top: 3px white solid; 
-
-    font-size: 13px;
+.MobileLinks {
+  display: none;
+  position: fixed;
+  top: 13vh;
+  left: 4.2vw;
+  border-top: 3px white solid;
+  width: 260px;
+  font-size: 13px;
 }
 
 .MobileLinks > div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 50px;
-    background-color: rgb(0, 0, 0,0.8);
-    border:none;
-    margin: 0;
-    color: #b3b3b3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  background-color: rgb(0, 0, 0, 0.8);
+  border: none;
+  margin: 0;
+  color: #b3b3b3;
 }
 
 @media (max-width: 900px) {
   .DesktopOnly {
     display: none;
   }
-  .MobileLinks{
-      display: flex;
-      flex-flow: column;
-      text-align: center;
+  .MobileLinks {
+    flex-flow: column;
+    text-align: center;
   }
 }
 @media (min-width: 901px) {

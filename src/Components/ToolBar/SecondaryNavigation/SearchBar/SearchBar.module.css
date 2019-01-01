@@ -1,0 +1,35 @@
+.SearchBar {
+  display: inline-block;
+}
+
+.InputText{
+  width: 2px;
+  height: 35px;
+  background-color: rgb(0,0,0,0.7) ;
+  border: 1px white solid;
+  padding: 0 0 0 40px;
+  color: white;
+  font-size: 1.2em;
+  transition: 0.3s width, opacity;
+  opacity: 0;
+}
+
+.SearchIcon{
+  position: relative;
+  top: 6px;
+  left: 30px;
+  width: 20px; 
+}
+
+@media (min-width : 401px){
+  .InputText:focus{
+    width: 200px;
+    opacity: 1;
+  }
+}
+
+@media (max-width : 400px){
+  .SearchBar{
+    display: none;
+  }
+}

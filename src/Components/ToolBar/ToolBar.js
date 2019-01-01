@@ -2,8 +2,8 @@ import React from 'react';
 import classes from './ToolBar.module.css';
 
 import Logo from './Logo/Logo';
-import PrimaryNavigation from './PrimaryNavigation/PrimaryNavigation'
-// import SearchBar from './SearchBar/SearchBar';
+import PrimaryNavigation from './PrimaryNavigation/PrimaryNavigation';
+import SecondaryNavigation from './SecondaryNavigation/SecondaryNavigation';
 
 class ToolBar extends React.Component {
   render() {
@@ -11,6 +11,7 @@ class ToolBar extends React.Component {
       <header className={classes.ToolBar}>
         <Logo />
         <PrimaryNavigation />
+        <SecondaryNavigation />
       </header>
     );
   }

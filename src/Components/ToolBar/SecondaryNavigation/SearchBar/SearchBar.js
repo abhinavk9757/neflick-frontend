@@ -1,16 +1,16 @@
 import React from 'react';
 import classes from './SearchBar.module.css';
+import searchIcon from '../../../../Assets/searchIcon.svg';
 
 const searchBar = () => {
   return (
     <div className={classes.SearchBar}>
+      <img src={searchIcon} alt="searchIcon" className={classes.SearchIcon} />
       <input
         type="text"
-        name="movie_name"
         className={classes.InputText}
-        placeholder="Search"
+        placeholder="Titles, peoples, genres"
       />
-      <input type='button' className={classes.Button}/>
     </div>
   );
 };

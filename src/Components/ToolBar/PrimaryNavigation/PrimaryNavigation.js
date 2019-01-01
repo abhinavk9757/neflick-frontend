@@ -13,6 +13,7 @@ class PrimaryNavigation extends React.Component {
     }
   };
   render() {
+    console.log(classes);
     return (
       <div className={classes.PrimaryNavigation}>
         <div className={classes.DesktopOnly}>
@@ -22,7 +23,7 @@ class PrimaryNavigation extends React.Component {
           <a href="/">Recently Added</a>
           <a href="/">My List</a>
         </div>
-        <div className={classes.MobileOnly} onClick={this.mobileLinksHandler}>
+        <div className={classes.MobileOnly} onClick={this.mobileLinksHandler} >
           <p>Browse</p>
         </div>
         <div

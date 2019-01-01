@@ -1,0 +1,80 @@
+.BillBoardText {
+  display: block;
+  position: absolute;
+  top: 10vw;
+  left: 4vw;
+  width: 40vw;
+  height: auto;
+}
+.ImageDiv {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+.ImageDiv > * {
+  width: 90%;
+}
+.Buttons {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  width: 100%;
+  margin-top: 2vh;
+}
+
+.Buttons > span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10vw;
+  min-height: 5vh;
+  margin: 0;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+  background-color: rgb(95, 92, 92, 0.9);
+  margin-right: 1vw;
+  margin-left: 1vw;
+  padding: -4px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.Buttons > span > p {
+  margin: 0px;
+  font-size: 1vw;
+  padding: 0px;
+  font-weight:800; 
+}
+
+.Buttons > span > img {
+  width: 1vw;
+  margin: 0px;
+  padding: 0px;
+  margin-right: 3px;
+}
+
+.Buttons > span:hover {
+  background-color: white;
+}
+
+.PlayButton {
+  transition: 0.2s all;
+}
+
+.PlayButton:hover {
+  margin-right: 0px;
+  padding-right: 1vw;
+  margin-left: 0px;
+  padding-left: 1vw;
+  margin-top: 0px;
+  padding-top: 1vh;
+  margin-bottom: 0px;
+  padding-bottom: 1vh;
+}
+
+.Information{
+    margin-top: 1vh; 
+    font-size: 1.5vw;
+    color: white;
+    cursor: pointer;
+}

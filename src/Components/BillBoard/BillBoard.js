@@ -4,12 +4,14 @@ import classes from './BillBoard.module.css';
 class BillBoard extends React.Component {
   state = {
     marginBot: 0,
+    bot: 0,
   };
 
-  handleMargin = () => {
+  handleMarginAndBot = () => {
     const currentHeight = document.getElementById('billboard').clientHeight;
     this.setState({
       marginBot: currentHeight * -0.18,
+      bot: currentHeight * 0.8,
     });
   };
 
@@ -24,7 +26,7 @@ class BillBoard extends React.Component {
         className={classes.BillBoard}
         id="billboard"
         style={{ marginBottom: `${this.state.marginBot}px` }}
-        onLoad={this.handleMargin}
+        onLoad={this.handleMarginAndBot}
       >
         <img
           src={img.src}
