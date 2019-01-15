@@ -7,6 +7,9 @@ import BillBoardText from './Components/BillBoardText/BillBoardText'
 
 import classes from './App.module.css';
 
+// Setting up Environment variables
+require('dotenv').config(); 
+
 class App extends Component {
 
   render() {
@@ -19,8 +22,6 @@ class App extends Component {
         <BillBoardText />
         
         <div className={classes.content}>
-          <SearchResults />
-          <SearchResults />
           <SearchResults />
           <SearchResults />
           <SearchResults />
