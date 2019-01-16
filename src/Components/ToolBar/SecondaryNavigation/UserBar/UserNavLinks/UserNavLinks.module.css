@@ -1,0 +1,25 @@
+.UserNavLinks {
+  position: fixed;
+  top: 14vh;
+  right: 3.5vw;
+  width: 220px;
+  background-color: rgba(0, 0, 0, 0.8);
+  flex-direction: column;
+  color:#b3b3b3;
+  cursor: pointer;
+  border-top: 3px white solid; 
+}
+
+.UserNavLinks > div {
+  font-weight: 400;
+  font-size: 13px;
+  height: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.UserNavLinks > div:hover{
+    background-color: black; 
+}

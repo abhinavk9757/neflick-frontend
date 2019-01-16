@@ -1,5 +1,6 @@
 .UserBar{
     display: inline-block;
-    min-width: 100px;
-    min-height: 100px;
+    height: 31px;
+    width: 40px;
+    cursor: pointer;
 }
