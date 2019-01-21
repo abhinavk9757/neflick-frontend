@@ -10,7 +10,7 @@
   transition: ease-in-out 0.4s all;
   transition-delay: 0.2s;
   text-align: center;
-  color: rgb(0, 0, 0, 0);
+  color: rgba(0, 0, 0, 0);
   cursor: pointer;
 }
 
@@ -21,6 +21,5 @@
 .SearchResult:hover {
   height: 250px;
   min-width: 400px;
-  color: rgb(0, 0, 0, 1);
-  background-color: blue; 
+  color: rgba(0, 0, 0, 1);
 }
