@@ -1,5 +1,11 @@
 import { combineReducers } from 'redux';
 
-export default combineReducers({
-    // Reducers from Import
-})
+import billBoardReducer from './BillBoard/BillBoardReducer';
+import toolBarReducer from './ToolBar/toolBarReducer';
+
+const combinedReducer = combineReducers({
+  BillBoard: billBoardReducer,
+  ToolBar: toolBarReducer,
+});
+
+export default combinedReducer;

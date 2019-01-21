@@ -1,23 +1,20 @@
 import React from 'react';
 import classes from './BillBoard.module.css';
 
-class BillBoard extends React.Component {
-  state = {
-    marginBot: 0,
-  };
+import { connect } from 'react-redux';
 
-  componentDidMount(){
+class BillBoard extends React.Component {
+  componentDidMount() {
     window.addEventListener('resize', this.handleBotMargin);
   }
 
-  componentWillUnmount(){
-    window.removeEventListener('resize',this.handleBotMargin);
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleBotMargin);
   }
 
   handleBotMargin = () => {
-    const currentHeight = document.getElementById('billboard').clientHeight;
-    this.setState({
-      marginBot: currentHeight * -0.18,
+    this.props.dispatch({
+      type: 'HANDLE_BOT_MARGIN',
     });
   };
 
@@ -31,7 +28,7 @@ class BillBoard extends React.Component {
       <div
         className={classes.BillBoard}
         id="billboard"
-        style={{ marginBottom: `${this.state.marginBot}px` }}
+        style={{ marginBottom: `${this.props.marginBot}px` }}
         onLoad={this.handleBotMargin}
       >
         <img
@@ -44,4 +41,10 @@ class BillBoard extends React.Component {
   }
 }
 
-export default BillBoard;
+const mapStateToProps = state => {
+  return {
+    marginBot: state.BillBoard.marginBot,
+  };
+};
+
+export default connect(mapStateToProps)(BillBoard);

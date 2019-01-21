@@ -5,10 +5,9 @@ import Logo from './Logo/Logo';
 import PrimaryNavigation from './PrimaryNavigation/PrimaryNavigation';
 import SecondaryNavigation from './SecondaryNavigation/SecondaryNavigation';
 
+import { connect } from 'react-redux';
+
 class ToolBar extends React.Component {
-  state = {
-    backgroundColor: 'rgba(0, 0, 0, 0)',
-  };
 
   componentDidMount() {
     window.addEventListener('scroll', this.onScroll);
@@ -20,12 +19,12 @@ class ToolBar extends React.Component {
 
   onScroll = () => {
     if (window.scrollY > 0) {
-      this.setState({
-        backgroundColor: 'rgba(0, 0, 0, 1)',
+      this.props.dispatch({
+        type: 'OPAQUE',
       });
     } else {
-      this.setState({
-        backgroundColor: 'rgba(0, 0, 0, 0)',
+      this.props.dispatch({
+        type: 'TRANSPARENT',
       });
     }
   };
@@ -33,7 +32,7 @@ class ToolBar extends React.Component {
     return (
       <header
         className={classes.ToolBar}
-        style={{ backgroundColor: this.state.backgroundColor }}
+        style={{ backgroundColor: this.props.backgroundColor }}
       >
         <Logo />
         <PrimaryNavigation />
@@ -42,4 +41,8 @@ class ToolBar extends React.Component {
     );
   }
 }
-export default ToolBar;
+
+const mapStateToProps = state => {
+  return { backgroundColor: state.ToolBar.backgroundColor };
+};
+export default connect(mapStateToProps)(ToolBar);
