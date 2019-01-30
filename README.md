@@ -1,8 +1,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### Make .env file in the root folder with declarations as follows:
 
-In the project directory, you can run:
+SERVER_URI=[YOUR URI HERE] In this case its http://neflick-backend.herokuapp.com/
 
 ### `npm start`
 
