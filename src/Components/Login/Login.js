@@ -3,10 +3,12 @@ import classes from './Login.module.css';
 import Logo from '../../Assets/netflix.svg';
 
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 // import { withErrorBoundary } from '../ErrorBoundary/ErrorBoundary';
 
+import Cookies from 'universal-cookie';
+
 import axios from 'axios';
-require('dotenv').config();
 
 class Login extends Component {
   emailHandler(event) {
@@ -32,7 +34,8 @@ class Login extends Component {
       })
       .then(response => {
         if (response.headers['x-auth']) {
-          document.cookie = 'x-auth=' + response.headers['x-auth'];
+          const cookies = new Cookies();
+          cookies.set('x-auth', response.headers['x-auth']);
           console.log('Authentication Successful');
         }
       })
@@ -54,6 +57,7 @@ class Login extends Component {
   render() {
     return (
       <React.Fragment>
+        {this.props.verified ? <Redirect to="/" /> : null}
         <img src={Logo} alt="Logo" className={classes.Logo} />
         <div className={classes.Login}>
           <div className={classes.LoginBox}>
@@ -89,12 +93,18 @@ class Login extends Component {
           </div>
         </div>
         <div className={classes.footerInfo}>
-          <b>Use 'test@test.com' as the E-Mail and 'test123' as Password</b>
+          <p>
+            <b>Use 'test@test.com' as the E-Mail and 'test123' as Password</b>
+          </p>
+          <p>
+            <b>New User Registration is currently Disabled.</b>
+          </p>
         </div>
       </React.Fragment>
     );
   }
 }
+
 const mapStateToProps = state => {
   return {
     email: state.Login.email,
@@ -103,4 +113,5 @@ const mapStateToProps = state => {
     displayError: state.Login.displayError,
   };
 };
+
 export default connect(mapStateToProps)(Login);

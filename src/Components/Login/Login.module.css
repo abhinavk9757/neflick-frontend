@@ -68,10 +68,10 @@
   color: white;
   font-size: 1em;
 }
-.footerInfo{
-    position: fixed;
-    bottom: 2vh;
-    right: 5vw;
-    font-size: 1em;
-    color: white;
+.footerInfo {
+  position: fixed;
+  bottom: 2vh;
+  right: 5vw;
+  font-size: 1em;
+  color: white;
 }
