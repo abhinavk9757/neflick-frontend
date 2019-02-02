@@ -2,7 +2,6 @@ const initialState = {
   email: null,
   password: null,
   displayError: 'none',
-  verified: false,
 };
 
 const loginReducer = (state = initialState, action) => {
@@ -13,9 +12,7 @@ const loginReducer = (state = initialState, action) => {
     case 'PASSWORD':
       const password = action.payload;
       return { ...state, password: password };
-    case 'VERIFIED':
-      const verified = action.payload;
-      return { ...state, verified: verified };
+
     case 'DISPLAY_ERROR':
       const displayError = action.payload;
       return { ...state, displayError: displayError };

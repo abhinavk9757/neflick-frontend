@@ -2,18 +2,17 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### Make .env file in the root folder with declarations as follows:
 
-SERVER_URI=[YOUR URI HERE] In this case its http://neflick-backend.herokuapp.com/
+REACT_APP_BACKEND=[YOUR URI HERE] In this case its http://neflick-backend.herokuapp.com/
 
 ### `npm start`
 
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
 
 ### Done in this step
-    Added single state management using REDUX
+    Login and Routing
 
 ### Next Step
-    Add React Router  
+    1. Make Authentication Module 
+    2. Add dotenv support

@@ -3,8 +3,6 @@ import classes from './Login.module.css';
 import Logo from '../../Assets/netflix.svg';
 
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
-// import { withErrorBoundary } from '../ErrorBoundary/ErrorBoundary';
 
 import Cookies from 'universal-cookie';
 
@@ -40,24 +38,17 @@ class Login extends Component {
         }
       })
       .then(() => {
-        this.props.dispatch({
-          type: 'VERIFIED',
-          payload: true,
-        });
+        this.props.isAuthenticated('true');
       })
       .catch(error => {
         console.log(error);
-        this.props.dispatch({
-          type: 'DISPLAY_ERROR',
-          payload: 'block',
-        });
+        this.props.isAuthenticated('false');
       });
   }
 
   render() {
     return (
       <React.Fragment>
-        {this.props.verified ? <Redirect to="/" /> : null}
         <img src={Logo} alt="Logo" className={classes.Logo} />
         <div className={classes.Login}>
           <div className={classes.LoginBox}>

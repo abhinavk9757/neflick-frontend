@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import Cookies from 'universal-cookie';
-import axios from 'axios';
-import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import ToolBar from './Components/ToolBar/ToolBar';
 import SearchResults from './Components/SearchResults/SearchResults';
@@ -10,35 +8,19 @@ import BillBoardText from './Components/BillBoardText/BillBoardText';
 import Login from './Components/Login/Login';
 
 import classes from './App.module.css';
+import Cookies from 'universal-cookie';
+import axios from 'axios';
 
 class App extends Component {
-  constructor() {
-    super();
-    const cookies = new Cookies();
-    const xAuth = cookies.get('x-auth');
-    this.state = { authorized: null };
-    if (xAuth) {
-      axios
-        .get('https://neflickbackendtest.herokuapp.com/users/me', {
-          headers: { 'x-auth': xAuth },
-        })
-        .then(response => {
-          this.setState({
-            authorized: 'true',
-          });
-        })
-        .catch(() => {
-          console.log('UnAuthorized');
-          this.setState({
-            authorized: 'false',
-          });
-        });
-    }
-  }
+  isAuthenticated = payload => {
+    this.props.dispatch({
+      type: 'VERIFIED',
+      payload: payload,
+    });
+  };
 
-  browseComponent = () => (
+  browseComponent = (
     <React.Fragment>
-      {this.state.authorized === 'false' ? <Redirect to="/" /> : null}
       <div className={classes.backgroundBlack} />
       <ToolBar />
 
@@ -53,43 +35,40 @@ class App extends Component {
     </React.Fragment>
   );
 
-  loginComponent = () => (
-    <React.Fragment>
-      <Login />
-      {this.state.authorized === 'true' ? <Redirect to="/" /> : null}
-    </React.Fragment>
+  loginComponent = (
+    <Login isAuthenticated={payload => this.isAuthenticated(payload)} />
   );
 
-  rootComponent = () => {
-    return (
-      <div>
-        {this.state.authorized === 'true' ? <Redirect to="/browse" /> : null}
-        {this.state.authorized === 'false' ? <Redirect to="/login" /> : null}
-      </div>
-    );
-  };
-
   componentDidMount = () => {
-    if (!this.xAuth) {
-      this.setState({
-        authorized: 'false',
-      });
+    const xAuth = new Cookies().get('x-auth');
+    if (!xAuth) {
+      this.isAuthenticated('false');
+    } else if (this.props.verified === 'null') {
+      axios
+        .get('https://neflickbackendtest.herokuapp.com/users/me', {
+          headers: { 'x-auth': xAuth },
+        })
+        .then(() => {
+          this.isAuthenticated('true');
+        })
+        .catch(() => {
+          this.isAuthenticated('false');
+        });
     }
   };
-
-  render() {
-    return (
-      <BrowserRouter>
-        <div>
-          <Switch>
-            <Route exact path='/' component={this.rootComponent} />
-            <Route exact path="/browse" component={this.browseComponent} />
-            <Route exact path="/login" component={this.loginComponent} />
-          </Switch>
-        </div>
-      </BrowserRouter>
-    );
-  }
+  render = () => {
+    if (this.props.verified === 'true') {
+      return this.browseComponent;
+    } else if (this.props.verified === 'false') {
+      return this.loginComponent;
+    } else {
+      return null;
+    }
+  };
 }
-
-export default App;
+const mapStateToProps = state => {
+  return {
+    verified: state.App.verified,
+  };
+};
+export default connect(mapStateToProps)(App);

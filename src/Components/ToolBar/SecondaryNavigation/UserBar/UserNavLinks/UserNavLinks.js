@@ -1,14 +1,11 @@
 import React from 'react';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
+import { connect } from 'react-redux';
 
 import classes from './UserNavLinks.module.css';
 
 class UserNavLinks extends React.Component {
-  state = {
-    loggedOut: false,
-  };
-
   logoutHandler = () => {
     const cookies = new Cookies();
     const xAuth = cookies.get('x-auth');
@@ -17,10 +14,15 @@ class UserNavLinks extends React.Component {
         headers: { 'x-auth': xAuth },
       })
       .then(response => {
-        console.log(response.status);
         if (response.status === 200) {
           cookies.remove('x-auth');
         }
+      })
+      .then(() => {
+        this.props.dispatch({
+          type: 'VERIFIED',
+          payload: 'false',
+        });
       });
   };
 
@@ -40,4 +42,9 @@ class UserNavLinks extends React.Component {
   }
 }
 
-export default UserNavLinks;
+const mapStateToProps = state => {
+  return {
+    verified: state.App.verified,
+  };
+};
+export default connect(mapStateToProps)(UserNavLinks);
