@@ -49,7 +49,6 @@ class App extends Component {
       authenticateToken(xAuth)
         .then(response => {
           this.isAuthenticated('true');
-          console.log(response);
         })
         .catch(() => {
           cookies.remove('x-auth');
