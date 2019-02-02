@@ -1,18 +1,15 @@
 import React from 'react';
-import axios from 'axios';
 import Cookies from 'universal-cookie';
 import { connect } from 'react-redux';
 
 import classes from './UserNavLinks.module.css';
+import { logout } from '../../../../../Authentication/Authentication';
 
 class UserNavLinks extends React.Component {
   logoutHandler = () => {
     const cookies = new Cookies();
     const xAuth = cookies.get('x-auth');
-    axios
-      .delete('https://neflickbackendtest.herokuapp.com/users/logout', {
-        headers: { 'x-auth': xAuth },
-      })
+    logout(xAuth)
       .then(response => {
         if (response.status === 200) {
           cookies.remove('x-auth');

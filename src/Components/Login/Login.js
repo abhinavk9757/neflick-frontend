@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import classes from './Login.module.css';
 import Logo from '../../Assets/netflix.svg';
-
 import { connect } from 'react-redux';
-
 import Cookies from 'universal-cookie';
-
-import axios from 'axios';
+import { login } from '../../Authentication/Authentication';
 
 class Login extends Component {
   emailHandler(event) {
@@ -24,25 +21,21 @@ class Login extends Component {
   }
 
   performLogin(email, password) {
-    const uri = 'https://neflickbackendtest.herokuapp.com/';
-    axios
-      .post(uri + 'users/login', {
-        email: email,
-        password: password,
-      })
+    login(email, password)
       .then(response => {
         if (response.headers['x-auth']) {
           const cookies = new Cookies();
           cookies.set('x-auth', response.headers['x-auth']);
-          console.log('Authentication Successful');
         }
       })
       .then(() => {
         this.props.isAuthenticated('true');
       })
-      .catch(error => {
-        console.log(error);
-        this.props.isAuthenticated('false');
+      .catch(() => {
+        this.props.dispatch({
+          type: 'DISPLAY_ERROR',
+          payload: 'block',
+        });
       });
   }
 
@@ -84,12 +77,11 @@ class Login extends Component {
           </div>
         </div>
         <div className={classes.footerInfo}>
+          <p>Use 'test@test.com' as the E-Mail and 'test123' as Password</p>
           <p>
-            <b>Use 'test@test.com' as the E-Mail and 'test123' as Password</b>
+            <b>LogOut after use to prevent spam tokens!</b>
           </p>
-          <p>
-            <b>New User Registration is currently Disabled.</b>
-          </p>
+          <p>New User Registration is currently Disabled.</p>
         </div>
       </React.Fragment>
     );

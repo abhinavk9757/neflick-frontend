@@ -9,7 +9,7 @@ import Login from './Components/Login/Login';
 
 import classes from './App.module.css';
 import Cookies from 'universal-cookie';
-import axios from 'axios';
+import { authenticateToken } from './Authentication/Authentication';
 
 class App extends Component {
   isAuthenticated = payload => {
@@ -40,18 +40,19 @@ class App extends Component {
   );
 
   componentDidMount = () => {
-    const xAuth = new Cookies().get('x-auth');
+    const cookies = new Cookies();
+    let xAuth = cookies.get('x-auth');
+
     if (!xAuth) {
       this.isAuthenticated('false');
     } else if (this.props.verified === 'null') {
-      axios
-        .get('https://neflickbackendtest.herokuapp.com/users/me', {
-          headers: { 'x-auth': xAuth },
-        })
-        .then(() => {
+      authenticateToken(xAuth)
+        .then(response => {
           this.isAuthenticated('true');
+          console.log(response);
         })
         .catch(() => {
+          cookies.remove('x-auth');
           this.isAuthenticated('false');
         });
     }

@@ -12,7 +12,6 @@ const loginReducer = (state = initialState, action) => {
     case 'PASSWORD':
       const password = action.payload;
       return { ...state, password: password };
-
     case 'DISPLAY_ERROR':
       const displayError = action.payload;
       return { ...state, displayError: displayError };
