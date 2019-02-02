@@ -81,7 +81,7 @@ class Login extends Component {
           <p>
             <b>LogOut after use to prevent spam tokens!</b>
           </p>
-          <p>New User Registration is currently Disabled.</p>
+          <p>Register for new users by sending request to Backend Api - <a href="https://github.com/abhinavk9757/neflick-backend">Github</a></p>
         </div>
       </React.Fragment>
     );
